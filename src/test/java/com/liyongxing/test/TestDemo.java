@@ -35,6 +35,9 @@ public class TestDemo {
         schoolMapper = sqlSession.getMapper(SchoolMapper.class);
     }
 
+
+
+
     @Test
     public void queryById(){
         School school = schoolMapper.selectByPrimaryKey(1);
