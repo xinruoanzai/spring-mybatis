@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liyongxing.springMybatis.mapper.SchoolMapper">
+  <resultMap id="BaseResultMap" type="com.liyongxing.springMybatis.beans.School">
+    <!--@mbg.generated-->
+    <!--@Table school-->
+    <id column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="sname" jdbcType="VARCHAR" property="sname" />
+    <result column="saddress" jdbcType="VARCHAR" property="saddress" />
+    <result column="sdescription" jdbcType="VARCHAR" property="sdescription" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    sid, sname, saddress, sdescription
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from school
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from school
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="sid" keyProperty="sid" parameterType="com.liyongxing.springMybatis.beans.School" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into school (sname, saddress, sdescription
+      )
+    values (#{sname,jdbcType=VARCHAR}, #{saddress,jdbcType=VARCHAR}, #{sdescription,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="sid" keyProperty="sid" parameterType="com.liyongxing.springMybatis.beans.School" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into school
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sname != null">
+        sname,
+      </if>
+      <if test="saddress != null">
+        saddress,
+      </if>
+      <if test="sdescription != null">
+        sdescription,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sname != null">
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="saddress != null">
+        #{saddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sdescription != null">
+        #{sdescription,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liyongxing.springMybatis.beans.School">
+    <!--@mbg.generated-->
+    update school
+    <set>
+      <if test="sname != null">
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="saddress != null">
+        saddress = #{saddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sdescription != null">
+        sdescription = #{sdescription,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liyongxing.springMybatis.beans.School">
+    <!--@mbg.generated-->
+    update school
+    set sname = #{sname,jdbcType=VARCHAR},
+      saddress = #{saddress,jdbcType=VARCHAR},
+      sdescription = #{sdescription,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+</mapper>
